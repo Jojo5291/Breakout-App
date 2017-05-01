@@ -33,6 +33,26 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         
     }
     
+    
+    
+    @IBAction func padGesture(_ sender: UIPanGestureRecognizer) {
+        
+        paddleView.center = CGPoint(x: sender.location(in: self.view).x, y: paddleView.center.y)
+        
+        dynamicAnimator.updateItem(usingCurrentState: paddleView)
+        
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
     override func viewDidAppear(_ animated: Bool) {
         ballView.layer.cornerRadius = 12.0
         

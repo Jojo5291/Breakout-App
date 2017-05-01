@@ -41,6 +41,7 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         
         dynamicAnimator.updateItem(usingCurrentState: paddleView)
         
+    
         
         
     }
@@ -64,7 +65,7 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         
         pushBehavior.active = true
         
-        pushBehavior.magnitude = 0.5
+        pushBehavior.magnitude = 0.1
         
         dynamicAnimator.addBehavior(pushBehavior)
         
@@ -102,6 +103,17 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         
     }
     
+    
+    func collisionBehavior(_ behavior: UICollisionBehavior, beganContactFor item: UIDynamicItem, withBoundaryIdentifier identifier: NSCopying?, at p: CGPoint) {
+        
+
+        
+        
+    }
+
+    func collisionBehavior(_ behavior: UICollisionBehavior, endedContactFor item1: UIDynamicItem, with item2: UIDynamicItem) {
+        
+    }
     
 }
 

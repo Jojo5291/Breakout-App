@@ -64,6 +64,7 @@
                     </view>
                     <connections>
                         <outlet property="ballView" destination="rQf-Az-Y8Y" id="L9w-Xm-dOn"/>
+                        <outlet property="paddleView" destination="Q0j-x4-CyT" id="WWs-IL-T41"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

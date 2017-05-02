@@ -49,7 +49,7 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
     @IBOutlet weak var View10: UIView!
     
     
-    
+
     
     
     override func viewDidLoad() {
@@ -58,6 +58,7 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         ballView.layer.cornerRadius = 15
         
         let blockArray = [View1, View2,View3,View4,View5,View6,View7,View8,View9,View10]
+
     }
     
     
@@ -153,7 +154,7 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         
         UIView.animate(withDuration: 0.2) {
             
-            
+         
             
             
         }

@@ -87,11 +87,11 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         
         pushBehavior.active = true
         
-        pushBehavior.magnitude = 1.0
+        pushBehavior.magnitude = 0.4
         
         dynamicAnimator.addBehavior(pushBehavior)
         
-        collisionBehavior = UICollisionBehavior(items: [ballView, paddleView])
+        collisionBehavior = UICollisionBehavior(items: [ballView, paddleView, View1,View2,View3,View4,View5,View6,View7,View8,View9,View10])
         
         collisionBehavior.collisionMode = UICollisionBehaviorMode.everything
         
@@ -127,6 +127,12 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         
         blockDynamicBehavior.density = 9000.1
         
+        blockDynamicBehavior.elasticity = 1
+        
+        blockDynamicBehavior.resistance = 0
+        
+        blockDynamicBehavior.friction = 0
+        
         dynamicAnimator.addBehavior(blockDynamicBehavior)
         
         
@@ -145,7 +151,9 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
 
     func collisionBehavior(_ behavior: UICollisionBehavior, endedContactFor item1: UIDynamicItem, with item2: UIDynamicItem) {
         
-        UIView.animate(withDuration: 0.2) { 
+        UIView.animate(withDuration: 0.2) {
+            
+            
             
             
         }

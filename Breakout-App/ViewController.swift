@@ -26,6 +26,9 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
     var paddleDynamicBehavior: UIDynamicItemBehavior!
     
     var blockDynamicBehavior: UIDynamicItemBehavior!
+    
+    
+    @IBOutlet weak var View1: UIView!
 
     @IBOutlet weak var View2: UIView!
     
@@ -118,7 +121,7 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         
         dynamicAnimator.addBehavior(paddleDynamicBehavior)
         
-        //blockDynamicBehavior = UIDynamicItemBehavior(items: [blockArray])
+        blockDynamicBehavior = UIDynamicItemBehavior(items: [View1,View2,View3,View4,View5,View6,View7,View8,View9,View10])
         
         blockDynamicBehavior.allowsRotation = false
         

@@ -117,7 +117,7 @@
                         </connections>
                     </view>
                     <connections>
-                        <outlet property="View1" destination="ssW-lS-xZr" id="klN-rr-TUD"/>
+                        <outlet property="View1" destination="ssW-lS-xZr" id="eY4-CB-czg"/>
                         <outlet property="View10" destination="O1J-Dk-t5V" id="49E-a3-VbC"/>
                         <outlet property="View2" destination="6dM-l7-6qv" id="id2-Bc-sy2"/>
                         <outlet property="View3" destination="yMc-aL-ov1" id="c4c-HP-MPe"/>

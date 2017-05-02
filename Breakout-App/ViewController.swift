@@ -96,7 +96,7 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         
         dynamicAnimator.addBehavior(paddleDynamicBehavior)
         
-        blockDynamicBehavior = UIDynamicItemBehavior(items: [blockArray])
+        //blockDynamicBehavior = UIDynamicItemBehavior(items: [blockArray])
         
         blockDynamicBehavior.allowsRotation = false
         

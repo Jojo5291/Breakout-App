@@ -44,6 +44,12 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         
         dynamicAnimator.updateItem(usingCurrentState: paddleView)
         
+        
+        if ballView.center.y > paddleView.center.y
+        {
+            ballView.backgroundColor = UIColor.white
+        }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -87,7 +93,7 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         
         paddleDynamicBehavior.allowsRotation = false
         
-        paddleDynamicBehavior.density = 1000.0
+        paddleDynamicBehavior.density = 9000.1
         
         dynamicAnimator.addBehavior(paddleDynamicBehavior)
         

@@ -112,7 +112,7 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IS9-HT-PLZ">
                                 <rect key="frame" x="0.0" y="608" width="375" height="59"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -122,6 +122,7 @@
                         </connections>
                     </view>
                     <connections>
+                        <outlet property="ballDeath" destination="IS9-HT-PLZ" id="dnS-1l-JMv"/>
                         <outlet property="ballView" destination="rQf-Az-Y8Y" id="L9w-Xm-dOn"/>
                         <outlet property="paddleView" destination="Q0j-x4-CyT" id="WWs-IL-T41"/>
                     </connections>

@@ -10,7 +10,6 @@ import UIKit
 
 class ViewController: UIViewController, UICollisionBehaviorDelegate {
     
-    @IBOutlet weak var ballDeath: UIView!
     
     @IBOutlet weak var ballView: UIView!
     
@@ -62,7 +61,7 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         
         dynamicAnimator.addBehavior(pushBehavior)
         
-        collisionBehavior = UICollisionBehavior(items: [ballView, paddleView, ballDeath])
+        collisionBehavior = UICollisionBehavior(items: [ballView, paddleView])
         
         collisionBehavior.collisionMode = UICollisionBehaviorMode.everything
         
@@ -92,13 +91,6 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         
         dynamicAnimator.addBehavior(paddleDynamicBehavior)
         
-        deathDynamicBehavior = UIDynamicItemBehavior(items: [ballDeath])
-        
-        deathDynamicBehavior.density = 1000.0
-        
-        dynamicAnimator.addBehavior(deathDynamicBehavior)
-        
-        deathDynamicBehavior.allowsRotation = false
         
         
         
@@ -107,10 +99,7 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
     
     func collisionBehavior(_ behavior: UICollisionBehavior, beganContactFor item: UIDynamicItem, withBoundaryIdentifier identifier: NSCopying?, at p: CGPoint) {
         
-    if collisionBehavior == ballDeath
-    {
-    ballView.backgroundColor = UIColor.white
-        }
+   
     
         
     }

@@ -27,12 +27,34 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
     
     var blockDynamicBehavior: UIDynamicItemBehavior!
 
+    @IBOutlet weak var View2: UIView!
+    
+    @IBOutlet weak var View3: UIView!
+    
+    @IBOutlet weak var View4: UIView!
+    
+    @IBOutlet weak var View5: UIView!
+    
+    @IBOutlet weak var View6: UIView!
+    
+    @IBOutlet weak var View7: UIView!
+    
+    @IBOutlet weak var View8: UIView!
+    
+    @IBOutlet weak var View9: UIView!
+    
+    @IBOutlet weak var View10: UIView!
+    
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         ballView.layer.cornerRadius = 15
         
+        let blockArray = [View1, View2,View3,View4,View5,View6,View7,View8,View9,View10]
     }
     
     

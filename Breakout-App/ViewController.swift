@@ -25,8 +25,7 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
     
     var paddleDynamicBehavior: UIDynamicItemBehavior!
     
-    var deathDynamicBehavior: UIDynamicItemBehavior!
-    
+    var blockDynamicBehavior: UIDynamicItemBehavior!
 
     
     override func viewDidLoad() {
@@ -79,7 +78,7 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         
         ballDynamicBehavior = UIDynamicItemBehavior(items: [ballView])
         
-        ballDynamicBehavior.allowsRotation = false
+        ballDynamicBehavior.allowsRotation = true
         
         ballDynamicBehavior.elasticity = 1.0
         
@@ -96,6 +95,15 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         paddleDynamicBehavior.density = 9000.1
         
         dynamicAnimator.addBehavior(paddleDynamicBehavior)
+        
+        blockDynamicBehavior = UIDynamicItemBehavior(items: [blockArray])
+        
+        blockDynamicBehavior.allowsRotation = false
+        
+        blockDynamicBehavior.density = 9000.1
+        
+        dynamicAnimator.addBehavior(blockDynamicBehavior)
+        
         
         
         

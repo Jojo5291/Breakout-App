@@ -48,7 +48,8 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
     
     @IBOutlet weak var View10: UIView!
     
-    
+    var blockArray = [UIView]()
+
 
     
     
@@ -57,9 +58,11 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         
         ballView.layer.cornerRadius = 15
         
-        let blockArray = [View1, View2,View3,View4,View5,View6,View7,View8,View9,View10]
-
+        
+        blockArray = [View1,View2,View3,View4,View5,View6,View7,View8,View9,View10]
+        
     }
+    
     
     
     
@@ -74,6 +77,8 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         {
             ballView.backgroundColor = UIColor.white
         }
+        
+        
         
     }
     
@@ -143,10 +148,13 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
     }
     
     
+    
     func collisionBehavior(_ behavior: UICollisionBehavior, beganContactFor item: UIDynamicItem, withBoundaryIdentifier identifier: NSCopying?, at p: CGPoint) {
         
-   
+        
     
+        
+        
         
     }
 
@@ -154,7 +162,17 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         
         UIView.animate(withDuration: 0.2) {
             
-         
+         for block in self.blockArray
+         {
+            if block == item2 as! UIView
+            {
+                
+                self.collisionBehavior.removeItem(block)
+                
+                block.removeFromSuperview()
+                
+            }
+        }
             
             
         }

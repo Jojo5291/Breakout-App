@@ -49,6 +49,10 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
     @IBOutlet weak var View10: UIView!
     
     var blockArray = [UIView]()
+    
+    var count = 0
+    
+    var isdone = false
 
 
     
@@ -79,7 +83,12 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         }
         
         
-        
+        if ballView.backgroundColor == UIColor.white || blockArray.count == 0
+        {
+            
+            makeTheAlert()
+
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -152,7 +161,15 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
     func collisionBehavior(_ behavior: UICollisionBehavior, beganContactFor item: UIDynamicItem, withBoundaryIdentifier identifier: NSCopying?, at p: CGPoint) {
         
         
-    
+        if ballView.center.y > paddleView.center.y
+        {
+            ballView.backgroundColor = UIColor.white
+            
+            makeTheAlert()
+        }
+        
+        
+    pushBehavior.magnitude = 0.4
         
         
         
@@ -161,6 +178,8 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
     func collisionBehavior(_ behavior: UICollisionBehavior, endedContactFor item1: UIDynamicItem, with item2: UIDynamicItem) {
         
         UIView.animate(withDuration: 0.2) {
+            
+            self.pushBehavior.magnitude = 0.4
             
          for block in self.blockArray
          {
@@ -171,6 +190,18 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
                 
                 block.removeFromSuperview()
                 
+                self.count += 1
+                
+                if self.count == 10
+                {
+                    self.isdone = true
+                }
+                
+                if self.isdone == true
+                {
+                    self.makeTheAlert()               }
+                
+                
             }
         }
             
@@ -178,6 +209,57 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         }
         
     }
+    
+    func makeTheAlert()
+    {
+        let alert = UIAlertController(title: "GAME OVER", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+        
+        let okAction = UIAlertAction(title: "restart", style: UIAlertActionStyle.default) { (action) in
+            
+            self.reset()
+        }
+        
+        let rageQuitAction = UIAlertAction(title: "rage quit", style: UIAlertActionStyle.default) { (action) in
+            
+            
+        }
+        
+        alert.addAction(okAction)
+        
+        alert.addAction(rageQuitAction)
+        
+        present(alert, animated: true, completion: nil)
+        
+    }
+    
+    func reset()
+    {
+        self.ballView.backgroundColor = UIColor.purple
+        
+        self.isdone = false
+        
+        self.ballView.center = CGPoint(x: 65, y: 257)
+        
+        pushBehavior = UIPushBehavior(items: [ballView], mode: UIPushBehaviorMode.instantaneous)
+        
+        pushBehavior.pushDirection = CGVector(dx: 0.5, dy: 1.0)
+        
+        pushBehavior.active = true
+        
+        pushBehavior.magnitude = 0.4
+        
+        
+        for block in blockArray
+        {
+            self.view.addSubview(block)
+            
+            block.backgroundColor = UIColor.cyan
+            
+            collisionBehavior.addItem(block)
+        }
+    }
+    
+ 
     
 }
 

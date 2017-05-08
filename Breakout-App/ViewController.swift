@@ -92,6 +92,12 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
+        for block in blockArray
+        {
+            block.backgroundColor = UIColor.cyan
+        }
+        
         ballView.layer.cornerRadius = 12.0
         
         dynamicAnimator = UIDynamicAnimator(referenceView: self.view)
@@ -133,6 +139,8 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         paddleDynamicBehavior.allowsRotation = false
         
         paddleDynamicBehavior.density = 9000.1
+        
+        paddleDynamicBehavior.friction = 0.0
         
         dynamicAnimator.addBehavior(paddleDynamicBehavior)
         
@@ -219,14 +227,10 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
             self.reset()
         }
         
-        let rageQuitAction = UIAlertAction(title: "rage quit", style: UIAlertActionStyle.default) { (action) in
-            
-            
-        }
+
         
         alert.addAction(okAction)
         
-        alert.addAction(rageQuitAction)
         
         present(alert, animated: true, completion: nil)
         

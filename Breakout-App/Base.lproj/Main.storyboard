@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Breakout-->
         <scene sceneID="21d-Id-0bZ">
             <objects>
-                <viewController id="KNw-Fn-xsJ" sceneMemberID="viewController">
+                <viewController title="Breakout" id="KNw-Fn-xsJ" customClass="StartingViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lPV-n4-DTz"/>
                         <viewControllerLayoutGuide type="bottom" id="fE6-bz-ghZ"/>
@@ -26,7 +26,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="START"/>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="FyH-wA-lQA"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="A0D-F3-hF7"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -37,10 +37,10 @@
             </objects>
             <point key="canvasLocation" x="-823" y="139"/>
         </scene>
-        <!--View Controller-->
+        <!--ViewController-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Breakout_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="Breakout_App" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -109,6 +109,13 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bC8-23-9uU">
+                                <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="X">
+                                    <color key="titleColor" red="1" green="0.084302671420000003" blue="0.11198292679999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
@@ -127,8 +134,8 @@
                         <outlet property="View7" destination="VM6-wv-dSN" id="TL9-BG-LbO"/>
                         <outlet property="View8" destination="RHj-AV-kbh" id="1eQ-jR-SxP"/>
                         <outlet property="View9" destination="sxX-NA-gRc" id="gc2-NH-LTN"/>
-                        <outlet property="ballView" destination="rQf-Az-Y8Y" id="L9w-Xm-dOn"/>
-                        <outlet property="paddleView" destination="Q0j-x4-CyT" id="WWs-IL-T41"/>
+                        <outlet property="ballView" destination="rQf-Az-Y8Y" id="mM3-Tz-pkw"/>
+                        <outlet property="paddleView" destination="Q0j-x4-CyT" id="Maf-VC-aFD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

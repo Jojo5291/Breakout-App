@@ -250,6 +250,8 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         
         pushBehavior.magnitude = 0.4
         
+        dynamicAnimator.addBehavior(pushBehavior)
+        
         self.count = 0
         
         

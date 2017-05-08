@@ -187,6 +187,9 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         
         UIView.animate(withDuration: 0.2) {
             
+            
+            
+            
             self.pushBehavior.magnitude = 0.4
             
          for block in self.blockArray
@@ -250,6 +253,8 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         
         pushBehavior.magnitude = 0.4
         
+        dynamicAnimator.updateItem(usingCurrentState: ballView)
+        
         dynamicAnimator.addBehavior(pushBehavior)
         
         self.count = 0
@@ -264,8 +269,12 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
             collisionBehavior.addItem(block)
         }
     }
+
+    func dynamicAnimatorStuffs()
+    {
     
- 
+    }
+    
     
 }
 

@@ -96,13 +96,115 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         for block in blockArray
         {
             block.backgroundColor = UIColor.cyan
+            
+            dynamicAnimatorStuffs()
         }
         
+
+        
+        
+        
+        
+        
+    }
+    
+    
+    
+    func collisionBehavior(_ behavior: UICollisionBehavior, beganContactFor item: UIDynamicItem, withBoundaryIdentifier identifier: NSCopying?, at p: CGPoint) {
+        
+        
+        if ballView.center.y > paddleView.center.y
+        {
+            ballView.backgroundColor = UIColor.white
+            
+            makeTheAlert()
+        }
+        
+        
+        
+        
+    }
+
+    func collisionBehavior(_ behavior: UICollisionBehavior, endedContactFor item1: UIDynamicItem, with item2: UIDynamicItem) {
+        
+        UIView.animate(withDuration: 0.2) {
+            
+            
+            
+            
+         for block in self.blockArray
+         {
+            if block == item2 as! UIView
+            {
+                
+                self.collisionBehavior.removeItem(block)
+                
+                block.removeFromSuperview()
+                
+                self.count += 1
+                
+                if self.count == 10
+                {
+                    self.makeTheAlert()
+                }
+                
+                
+                
+                
+            }
+        }
+            
+        }
+        
+    }
+    
+    func makeTheAlert()
+    {
+        let alert = UIAlertController(title: "GAME OVER", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+        
+        let okAction = UIAlertAction(title: "restart", style: UIAlertActionStyle.default) { (action) in
+            
+            self.reset()
+        }
+        
+
+        
+        alert.addAction(okAction)
+        
+        
+        present(alert, animated: true, completion: nil)
+        
+    }
+    
+    func reset()
+    {
+        self.ballView.backgroundColor = UIColor.purple
+        
+        
+        self.count = 0
+        
+        
+        for block in blockArray
+        {
+            self.view.addSubview(block)
+            
+            block.backgroundColor = UIColor.cyan
+            
+            collisionBehavior.addItem(block)
+        }
+        self.dynamicAnimatorStuffs()
+
+    }
+
+    func dynamicAnimatorStuffs()
+    {
         ballView.layer.cornerRadius = 12.0
         
         dynamicAnimator = UIDynamicAnimator(referenceView: self.view)
         
         pushBehavior = UIPushBehavior(items: [ballView], mode: UIPushBehaviorMode.instantaneous)
+        
+        ballView.center = CGPoint(x: 67, y: 250)
         
         pushBehavior.pushDirection = CGVector(dx: 0.5, dy: 1.0)
         
@@ -157,122 +259,6 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         blockDynamicBehavior.friction = 0
         
         dynamicAnimator.addBehavior(blockDynamicBehavior)
-        
-        
-        
-        
-        
-    }
-    
-    
-    
-    func collisionBehavior(_ behavior: UICollisionBehavior, beganContactFor item: UIDynamicItem, withBoundaryIdentifier identifier: NSCopying?, at p: CGPoint) {
-        
-        
-        if ballView.center.y > paddleView.center.y
-        {
-            ballView.backgroundColor = UIColor.white
-            
-            makeTheAlert()
-        }
-        
-        
-    pushBehavior.magnitude = 0.4
-        
-        
-        
-    }
-
-    func collisionBehavior(_ behavior: UICollisionBehavior, endedContactFor item1: UIDynamicItem, with item2: UIDynamicItem) {
-        
-        UIView.animate(withDuration: 0.2) {
-            
-            
-            
-            
-            self.pushBehavior.magnitude = 0.4
-            
-         for block in self.blockArray
-         {
-            if block == item2 as! UIView
-            {
-                
-                self.collisionBehavior.removeItem(block)
-                
-                block.removeFromSuperview()
-                
-                self.count += 1
-                
-                if self.count == 10
-                {
-                    self.makeTheAlert()
-                }
-                
-                
-                
-                
-            }
-        }
-            
-            
-        }
-        
-    }
-    
-    func makeTheAlert()
-    {
-        let alert = UIAlertController(title: "GAME OVER", message: nil, preferredStyle: UIAlertControllerStyle.alert)
-        
-        let okAction = UIAlertAction(title: "restart", style: UIAlertActionStyle.default) { (action) in
-            
-            self.reset()
-        }
-        
-
-        
-        alert.addAction(okAction)
-        
-        
-        present(alert, animated: true, completion: nil)
-        
-    }
-    
-    func reset()
-    {
-        self.ballView.backgroundColor = UIColor.purple
-        
-        self.isdone = false
-        
-        self.ballView.center = CGPoint(x: 65, y: 257)
-        
-        pushBehavior = UIPushBehavior(items: [ballView], mode: UIPushBehaviorMode.instantaneous)
-        
-        pushBehavior.pushDirection = CGVector(dx: 0.5, dy: 1.0)
-        
-        pushBehavior.active = true
-        
-        pushBehavior.magnitude = 0.4
-        
-        dynamicAnimator.updateItem(usingCurrentState: ballView)
-        
-        dynamicAnimator.addBehavior(pushBehavior)
-        
-        self.count = 0
-        
-        
-        for block in blockArray
-        {
-            self.view.addSubview(block)
-            
-            block.backgroundColor = UIColor.cyan
-            
-            collisionBehavior.addItem(block)
-        }
-    }
-
-    func dynamicAnimatorStuffs()
-    {
-    
     }
     
     

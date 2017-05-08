@@ -202,12 +202,10 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
                 
                 if self.count == 10
                 {
-                    self.isdone = true
+                    self.makeTheAlert()
                 }
                 
-                if self.isdone == true
-                {
-                    self.makeTheAlert()               }
+                
                 
                 
             }
@@ -251,6 +249,8 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         pushBehavior.active = true
         
         pushBehavior.magnitude = 0.4
+        
+        self.count = 0
         
         
         for block in blockArray

@@ -136,12 +136,25 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
          {
             if block == item2 as! UIView
             {
+                if block.backgroundColor == UIColor.cyan
+                {
+                    block.backgroundColor = UIColor.purple
+                }
+                
+                else if block.backgroundColor == UIColor.purple
+                {
                 
                 self.collisionBehavior.removeItem(block)
                 
                 block.removeFromSuperview()
+                    
+                    self.count += 1
+
                 
-                self.count += 1
+                }
+                
+                
+                
                 
                 if self.count == 10
                 {
@@ -167,9 +180,21 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
             self.reset()
         }
         
+        let rageQuitAction = UIAlertAction(title: "rage quit", style: UIAlertActionStyle.default) { (action) in
+            
+          self.dismiss(animated: false, completion: nil)
+            
+        }
+        
+        
+
 
         
         alert.addAction(okAction)
+        
+        alert.addAction(rageQuitAction)
+        
+        
         
         
         present(alert, animated: true, completion: nil)
@@ -226,7 +251,7 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         
         ballDynamicBehavior = UIDynamicItemBehavior(items: [ballView])
         
-        ballDynamicBehavior.allowsRotation = true
+        ballDynamicBehavior.allowsRotation = false
         
         ballDynamicBehavior.elasticity = 1.0
         

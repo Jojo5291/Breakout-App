@@ -164,7 +164,7 @@ class NextViewController: UIViewController, UICollisionBehaviorDelegate {
                     }
                     
                  
-                    if self.count == 10
+                    if self.count == 14
                     {
                         self.makeTheAlert()
                     }

@@ -62,11 +62,9 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         
         ballView.layer.cornerRadius = 15
         
+        
+        
         reset()
-        
-        
-        blockArray = [View1,View2,View3,View4,View5,View6,View7,View8,View9,View10]
-        
     }
     
     
@@ -138,7 +136,7 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
             
          for block in self.blockArray
          {
-            if block == item2 as! UIView
+            if block == item2 as? UIView
             {
                 if block!.backgroundColor == UIColor.cyan
                 {
@@ -212,38 +210,39 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         
         self.count = 0
         
-        View1 = CGRect(x: 46, y: 28, width: 50, height: 50) as! UIView
+        View1 = UIView(frame: CGRect(x: 46, y: 28, width: 50, height: 50))
         
-        View2 = CGRect(x: 104, y: 28, width: 50, height: 50) as! UIView
+        View2 = UIView(frame: CGRect(x: 104, y: 28, width: 50, height: 50))
         
-        View3 = CGRect(x: 162, y: 28, width: 50, height: 50)  as! UIView
+        View3 = UIView(frame: CGRect(x: 104, y: 28, width: 50, height: 50))
+            
+        View4 = UIView(frame: CGRect(x: 220, y: 28, width: 50, height: 50))
         
-        View4 = CGRect(x: 220, y: 28, width: 50, height: 50) as! UIView
-        
-        View5 = CGRect(x: 278, y: 28, width: 50, height: 50) as! UIView
-        
-        
-        View6 = CGRect(x: 46, y: 46, width: 50, height: 50) as! UIView
-        
-        View7 = CGRect(x: 104, y: 46, width: 50, height: 50) as! UIView
-        
-        View8 = CGRect(x: 162, y: 46, width: 50, height: 50) as! UIView
-        
-        View9 = CGRect(x: 220, y: 46, width: 50, height: 50) as! UIView
-        
-        View10 = CGRect(x: 278, y: 46, width: 50, height: 50) as! UIView
+        View5 = UIView(frame: CGRect(x: 278, y: 28, width: 50, height: 50))
         
         
-        for block in blockArray
+        View6 = UIView(frame: CGRect(x: 46, y: 46, width: 50, height: 50))
+        
+        View7 = UIView(frame: CGRect(x: 104, y: 46, width: 50, height: 50))
+        
+        View8 = UIView(frame: CGRect(x: 162, y: 46, width: 50, height: 50))
+        
+        View9 = UIView(frame: CGRect(x: 220, y: 46, width: 50, height: 50))
+        
+        View10 = UIView(frame: CGRect(x: 278, y: 46, width: 50, height: 50))
+ 
+        blockArray = [View1,View2,View3,View4,View5,View6,View7,View8,View9,View10]
+
+        
+    /*    for block in blockArray
         {
-            self.view.addSubview(block as! UIView)
+            view.addSubview(block!)
             
+            block?.backgroundColor  = UIColor.cyan
             
-            
-            block!.backgroundColor  = UIColor.cyan
-            
-            collisionBehavior.addItem(block as! UIDynamicItem)
+            collisionBehavior.addItem(block!)
         }
+ */
         self.dynamicAnimatorStuffs()
 
     }

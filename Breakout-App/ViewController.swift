@@ -28,27 +28,27 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
     var blockDynamicBehavior: UIDynamicItemBehavior!
     
     
-    @IBOutlet weak var View1: UIView!
+    var View1: UIView!
 
-    @IBOutlet weak var View2: UIView!
+    var View2: UIView!
     
-    @IBOutlet weak var View3: UIView!
+    var View3: UIView!
     
-    @IBOutlet weak var View4: UIView!
+    var View4: UIView!
     
-    @IBOutlet weak var View5: UIView!
+    var View5: UIView!
     
-    @IBOutlet weak var View6: UIView!
+    var View6: UIView!
     
-    @IBOutlet weak var View7: UIView!
+    var View7: UIView!
     
-    @IBOutlet weak var View8: UIView!
+    var View8: UIView!
     
-    @IBOutlet weak var View9: UIView!
+    var View9: UIView!
     
-    @IBOutlet weak var View10: UIView!
+    var View10: UIView!
     
-    var blockArray = [UIView]()
+    var blockArray = [UIView!]()
     
     var count = 0
     
@@ -61,6 +61,8 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         super.viewDidLoad()
         
         ballView.layer.cornerRadius = 15
+        
+        reset()
         
         
         blockArray = [View1,View2,View3,View4,View5,View6,View7,View8,View9,View10]
@@ -93,9 +95,11 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         
+        reset()
+        
         for block in blockArray
         {
-            block.backgroundColor = UIColor.cyan
+            block!.backgroundColor = UIColor.cyan
             
             dynamicAnimatorStuffs()
         }
@@ -136,17 +140,17 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
          {
             if block == item2 as! UIView
             {
-                if block.backgroundColor == UIColor.cyan
+                if block!.backgroundColor == UIColor.cyan
                 {
-                    block.backgroundColor = UIColor.purple
+                    block!.backgroundColor = UIColor.purple
                 }
                 
-                else if block.backgroundColor == UIColor.purple
+                else if block!.backgroundColor == UIColor.purple
                 {
                 
-                self.collisionBehavior.removeItem(block)
+                self.collisionBehavior.removeItem(block!)
                 
-                block.removeFromSuperview()
+                block!.removeFromSuperview()
                     
                     self.count += 1
 
@@ -208,14 +212,37 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         
         self.count = 0
         
+        View1 = CGRect(x: 46, y: 28, width: 50, height: 50) as! UIView
+        
+        View2 = CGRect(x: 104, y: 28, width: 50, height: 50) as! UIView
+        
+        View3 = CGRect(x: 162, y: 28, width: 50, height: 50)  as! UIView
+        
+        View4 = CGRect(x: 220, y: 28, width: 50, height: 50) as! UIView
+        
+        View5 = CGRect(x: 278, y: 28, width: 50, height: 50) as! UIView
+        
+        
+        View6 = CGRect(x: 46, y: 46, width: 50, height: 50) as! UIView
+        
+        View7 = CGRect(x: 104, y: 46, width: 50, height: 50) as! UIView
+        
+        View8 = CGRect(x: 162, y: 46, width: 50, height: 50) as! UIView
+        
+        View9 = CGRect(x: 220, y: 46, width: 50, height: 50) as! UIView
+        
+        View10 = CGRect(x: 278, y: 46, width: 50, height: 50) as! UIView
+        
         
         for block in blockArray
         {
-            self.view.addSubview(block)
+            self.view.addSubview(block as! UIView)
             
-            block.backgroundColor = UIColor.cyan
             
-            collisionBehavior.addItem(block)
+            
+            block!.backgroundColor  = UIColor.cyan
+            
+            collisionBehavior.addItem(block as! UIDynamicItem)
         }
         self.dynamicAnimatorStuffs()
 
@@ -284,6 +311,8 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         blockDynamicBehavior.friction = 0
         
         dynamicAnimator.addBehavior(blockDynamicBehavior)
+        
+
     }
     
     

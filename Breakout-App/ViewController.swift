@@ -211,26 +211,26 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         self.count = 0
         
         View1 = UIView(frame: CGRect(x: 46, y: 28, width: 50, height: 50))
-        
+        view.addSubview(View1)
         View2 = UIView(frame: CGRect(x: 104, y: 28, width: 50, height: 50))
-        
+        view.addSubview(View2)
         View3 = UIView(frame: CGRect(x: 104, y: 28, width: 50, height: 50))
-            
+        view.addSubview(View3)
         View4 = UIView(frame: CGRect(x: 220, y: 28, width: 50, height: 50))
-        
+        view.addSubview(View4)
         View5 = UIView(frame: CGRect(x: 278, y: 28, width: 50, height: 50))
-        
+        view.addSubview(View5)
         
         View6 = UIView(frame: CGRect(x: 46, y: 46, width: 50, height: 50))
-        
+        view.addSubview(View6)
         View7 = UIView(frame: CGRect(x: 104, y: 46, width: 50, height: 50))
-        
+        view.addSubview(View7)
         View8 = UIView(frame: CGRect(x: 162, y: 46, width: 50, height: 50))
-        
+        view.addSubview(View8)
         View9 = UIView(frame: CGRect(x: 220, y: 46, width: 50, height: 50))
-        
+        view.addSubview(View9)
         View10 = UIView(frame: CGRect(x: 278, y: 46, width: 50, height: 50))
- 
+        view.addSubview(View10)
         blockArray = [View1,View2,View3,View4,View5,View6,View7,View8,View9,View10]
 
         

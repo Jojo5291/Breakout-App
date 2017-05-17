@@ -28,25 +28,26 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
     var blockDynamicBehavior: UIDynamicItemBehavior!
     
     
-    var View1: UIView!
+   
+    @IBOutlet weak var View1: UIView!
 
-    var View2: UIView!
+    @IBOutlet weak var View2: UIView!
+   
+    @IBOutlet weak var View3: UIView!
     
-    var View3: UIView!
+    @IBOutlet weak var View4: UIView!
     
-    var View4: UIView!
+    @IBOutlet weak var View5: UIView!
     
-    var View5: UIView!
+    @IBOutlet weak var View6: UIView!
     
-    var View6: UIView!
+    @IBOutlet weak var View7: UIView!
     
-    var View7: UIView!
+    @IBOutlet weak var View8: UIView!
     
-    var View8: UIView!
+    @IBOutlet weak var View9: UIView!
     
-    var View9: UIView!
-    
-    var View10: UIView!
+    @IBOutlet weak var View10: UIView!
     
     var blockArray = [UIView!]()
     
@@ -62,7 +63,7 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         
         ballView.layer.cornerRadius = 15
         
-        
+        blockArray = [View1,View2,View3,View4,View5,View6,View7,View8,View9,View10]
         
         reset()
     }
@@ -97,9 +98,11 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         
         for block in blockArray
         {
-            block!.backgroundColor = UIColor.cyan
             
             dynamicAnimatorStuffs()
+            
+            
+            block?.backgroundColor = UIColor.cyan
         }
         
 
@@ -210,7 +213,7 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         
         self.count = 0
         
-        View1 = UIView(frame: CGRect(x: 46, y: 28, width: 50, height: 50))
+        /*View1 = UIView(frame: CGRect(x: 46, y: 28, width: 50, height: 50))
         view.addSubview(View1)
         View2 = UIView(frame: CGRect(x: 104, y: 28, width: 50, height: 50))
         view.addSubview(View2)
@@ -231,7 +234,8 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         view.addSubview(View9)
         View10 = UIView(frame: CGRect(x: 278, y: 46, width: 50, height: 50))
         view.addSubview(View10)
-        blockArray = [View1,View2,View3,View4,View5,View6,View7,View8,View9,View10]
+        
+ */
 
         
     /*    for block in blockArray

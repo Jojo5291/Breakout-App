@@ -12,7 +12,7 @@
         <!--Breakout-->
         <scene sceneID="21d-Id-0bZ">
             <objects>
-                <viewController title="Breakout" id="KNw-Fn-xsJ" customClass="StartingViewController" sceneMemberID="viewController">
+                <viewController title="Breakout" id="KNw-Fn-xsJ" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lPV-n4-DTz"/>
                         <viewControllerLayoutGuide type="bottom" id="fE6-bz-ghZ"/>

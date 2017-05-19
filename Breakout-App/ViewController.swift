@@ -34,19 +34,20 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
     
     var View3: UIView!
     
-    var View4: UIView!
+ var View4: UIView!
     
-    var View5: UIView!
+ var View5: UIView!
     
-    var View6: UIView!
+ var View6: UIView!
     
-    var View7: UIView!
+  var View7: UIView!
     
     var View8: UIView!
     
-    var View9: UIView!
+ var View9: UIView!
     
-    var View10: UIView!
+   var View10: UIView!
+ 
     
     var blockArray = [UIView!]()
     
@@ -90,26 +91,28 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+/*    override func viewDidAppear(_ animated: Bool) {
         
         
         
         for block in blockArray
         {
-            block!.backgroundColor = UIColor.cyan
             
             dynamicAnimatorStuffs()
+            
+            
+            block?.backgroundColor = UIColor.cyan
         }
         
         
         
-        
+
         
         
         
     }
     
-    
+*/
     
     func collisionBehavior(_ behavior: UICollisionBehavior, beganContactFor item: UIDynamicItem, withBoundaryIdentifier identifier: NSCopying?, at p: CGPoint) {
         
@@ -131,7 +134,7 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         UIView.animate(withDuration: 0.2) {
             
             
-            
+
             
             for block in self.blockArray
             {

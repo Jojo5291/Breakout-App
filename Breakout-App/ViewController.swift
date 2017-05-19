@@ -29,7 +29,7 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
     
     
     var View1: UIView!
-
+    
     var View2: UIView!
     
     var View3: UIView!
@@ -53,8 +53,8 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
     var count = 0
     
     var isdone = false
-
-
+    
+    
     
     
     override func viewDidLoad() {
@@ -62,9 +62,8 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         
         ballView.layer.cornerRadius = 15
         
-        
-        
-        reset()
+        blockArray = [View1,View2,View3,View4,View5,View6,View7,View8,View9,View10]
+
     }
     
     
@@ -87,13 +86,13 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         {
             
             makeTheAlert()
-
+            
         }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         
-        reset()
+        
         
         for block in blockArray
         {
@@ -102,7 +101,7 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
             dynamicAnimatorStuffs()
         }
         
-
+        
         
         
         
@@ -126,7 +125,7 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         
         
     }
-
+    
     func collisionBehavior(_ behavior: UICollisionBehavior, endedContactFor item1: UIDynamicItem, with item2: UIDynamicItem) {
         
         UIView.animate(withDuration: 0.2) {
@@ -134,40 +133,40 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
             
             
             
-         for block in self.blockArray
-         {
-            if block == item2 as? UIView
+            for block in self.blockArray
             {
-                if block!.backgroundColor == UIColor.cyan
+                if block == item2 as? UIView
                 {
-                    block!.backgroundColor = UIColor.purple
-                }
-                
-                else if block!.backgroundColor == UIColor.purple
-                {
-                
-                self.collisionBehavior.removeItem(block!)
-                
-                block!.removeFromSuperview()
+                    if block!.backgroundColor == UIColor.cyan
+                    {
+                        block!.backgroundColor = UIColor.purple
+                    }
+                        
+                    else if block!.backgroundColor == UIColor.purple
+                    {
+                        
+                        self.collisionBehavior.removeItem(block!)
+                        
+                        block!.removeFromSuperview()
+                        
+                        self.count += 1
+                        
+                        
+                    }
                     
-                    self.count += 1
-
-                
+                    
+                    
+                    
+                    if self.count == 10
+                    {
+                        self.makeTheAlert()
+                    }
+                    
+                    
+                    
+                    
                 }
-                
-                
-                
-                
-                if self.count == 10
-                {
-                    self.makeTheAlert()
-                }
-                
-                
-                
-                
             }
-        }
             
         }
         
@@ -184,13 +183,13 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         
         let rageQuitAction = UIAlertAction(title: "rage quit", style: UIAlertActionStyle.default) { (action) in
             
-          self.dismiss(animated: false, completion: nil)
+            self.dismiss(animated: false, completion: nil)
             
         }
         
         
-
-
+        
+        
         
         alert.addAction(okAction)
         
@@ -210,43 +209,19 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         
         self.count = 0
         
-        View1 = UIView(frame: CGRect(x: 46, y: 28, width: 50, height: 50))
-        view.addSubview(View1)
-        View2 = UIView(frame: CGRect(x: 104, y: 28, width: 50, height: 50))
-        view.addSubview(View2)
-        View3 = UIView(frame: CGRect(x: 104, y: 28, width: 50, height: 50))
-        view.addSubview(View3)
-        View4 = UIView(frame: CGRect(x: 220, y: 28, width: 50, height: 50))
-        view.addSubview(View4)
-        View5 = UIView(frame: CGRect(x: 278, y: 28, width: 50, height: 50))
-        view.addSubview(View5)
+           for block in blockArray
+         {
+         view.addSubview(block!)
+         
+         block?.backgroundColor  = UIColor.cyan
+         
+         collisionBehavior.addItem(block!)
+         }
         
-        View6 = UIView(frame: CGRect(x: 46, y: 46, width: 50, height: 50))
-        view.addSubview(View6)
-        View7 = UIView(frame: CGRect(x: 104, y: 46, width: 50, height: 50))
-        view.addSubview(View7)
-        View8 = UIView(frame: CGRect(x: 162, y: 46, width: 50, height: 50))
-        view.addSubview(View8)
-        View9 = UIView(frame: CGRect(x: 220, y: 46, width: 50, height: 50))
-        view.addSubview(View9)
-        View10 = UIView(frame: CGRect(x: 278, y: 46, width: 50, height: 50))
-        view.addSubview(View10)
-        blockArray = [View1,View2,View3,View4,View5,View6,View7,View8,View9,View10]
-
-        
-    /*    for block in blockArray
-        {
-            view.addSubview(block!)
-            
-            block?.backgroundColor  = UIColor.cyan
-            
-            collisionBehavior.addItem(block!)
-        }
- */
         self.dynamicAnimatorStuffs()
-
+        
     }
-
+    
     func dynamicAnimatorStuffs()
     {
         ballView.layer.cornerRadius = 12.0
@@ -311,7 +286,7 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         
         dynamicAnimator.addBehavior(blockDynamicBehavior)
         
-
+        
     }
     
     

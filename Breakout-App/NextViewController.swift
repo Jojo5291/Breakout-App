@@ -111,7 +111,7 @@ class NextViewController: UIViewController, UICollisionBehaviorDelegate {
         for block in blockArray
         {
             
-            block.backgroundColor = UIColor.cyan
+            block.backgroundColor = UIColor.red
 
         dynamicAnimatorStuffs()
             

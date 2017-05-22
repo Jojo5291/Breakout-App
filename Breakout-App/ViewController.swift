@@ -65,9 +65,11 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         
         makeBlocks()
         
+        blockArray = [View1,View2,View3,View4,View5,View6,View7,View8,View9,View10]
+
+        
         dynamicAnimatorStuffs()
         
-        blockArray = [View1,View2,View3,View4,View5,View6,View7,View8,View9,View10]
         
        
         
@@ -98,21 +100,6 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
 
      }
     
-    
-    override func viewDidAppear(_ animated: Bool) {
-        
-        dynamicAnimatorStuffs()
-        
-        for block in blockArray
-        {
-            block?.backgroundColor = UIColor.cyan
-            
-            dynamicAnimatorStuffs()
-            
-            
-        }
-        
-    }
      
  
     
@@ -137,7 +124,7 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
             
             for block in self.blockArray
             {
-                if block == item2 as! UIView
+                if (item2.isEqual(block) && item1.isEqual(self.ballView)) || (item2.isEqual(self.ballView) && item1.isEqual(block))
                 {
                     if block?.backgroundColor == UIColor.cyan
                     {
@@ -216,19 +203,13 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
     {
         ballView.layer.cornerRadius = 12.0
         
+        ballView.center = CGPoint(x: 67, y: 250)
+        
         dynamicAnimator = UIDynamicAnimator(referenceView: self.view)
         
         pushBehavior = UIPushBehavior(items: [ballView], mode: UIPushBehaviorMode.instantaneous)
         
-        ballView.center = CGPoint(x: 67, y: 250)
         
-        pushBehavior.pushDirection = CGVector(dx: 0.5, dy: 1.0)
-        
-        pushBehavior.active = true
-        
-        pushBehavior.magnitude = 0.4
-        
-        dynamicAnimator.addBehavior(pushBehavior)
         
         collisionBehavior = UICollisionBehavior(items: [ballView, paddleView, View1, View2, View3, View4, View5, View6, View7, View8, View9, View10])
         
@@ -239,6 +220,8 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         collisionBehavior.collisionDelegate = self
         
         dynamicAnimator.addBehavior(collisionBehavior)
+        
+        
         
         ballDynamicBehavior = UIDynamicItemBehavior(items: [ballView])
         
@@ -252,6 +235,7 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         
         dynamicAnimator.addBehavior(ballDynamicBehavior)
         
+        
         paddleDynamicBehavior = UIDynamicItemBehavior(items: [paddleView])
         
         paddleDynamicBehavior.allowsRotation = false
@@ -261,6 +245,8 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         paddleDynamicBehavior.friction = 0.0
         
         dynamicAnimator.addBehavior(paddleDynamicBehavior)
+        
+        
         
         blockDynamicBehavior = UIDynamicItemBehavior(items: [View1,View2,View3,View4,View5,View6,View7,View8,View9,View10])
         
@@ -275,6 +261,18 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         blockDynamicBehavior.friction = 0
         
         dynamicAnimator.addBehavior(blockDynamicBehavior)
+        
+        
+        
+        pushBehavior.pushDirection = CGVector(dx: 0.5, dy: 1.0)
+        
+        pushBehavior.active = true
+        
+        pushBehavior.magnitude = 0.1
+        
+        dynamicAnimator.addBehavior(pushBehavior)
+        
+
         
         
     }

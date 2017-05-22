@@ -34,20 +34,20 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
     
     var View3: UIView!
     
- var View4: UIView!
+    var View4: UIView!
     
- var View5: UIView!
+    var View5: UIView!
     
- var View6: UIView!
+    var View6: UIView!
     
-  var View7: UIView!
+    var View7: UIView!
     
     var View8: UIView!
     
- var View9: UIView!
+    var View9: UIView!
     
-   var View10: UIView!
- 
+    var View10: UIView!
+    
     
     var blockArray = [UIView!]()
     
@@ -63,8 +63,14 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         
         ballView.layer.cornerRadius = 15
         
+        makeBlocks()
+        
+        dynamicAnimatorStuffs()
+        
         blockArray = [View1,View2,View3,View4,View5,View6,View7,View8,View9,View10]
-
+        
+       
+        
     }
     
     
@@ -72,111 +78,99 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
     
     @IBAction func padGesture(_ sender: UIPanGestureRecognizer) {
         
-        paddleView.center = CGPoint(x: sender.location(in: self.view).x, y: paddleView.center.y)
+       
+     paddleView.center = CGPoint(x: sender.location(in: self.view).x, y: paddleView.center.y)
         
-        dynamicAnimator.updateItem(usingCurrentState: paddleView)
-        
+    dynamicAnimator.updateItem(usingCurrentState: paddleView)
         
         if ballView.center.y > paddleView.center.y
         {
-            ballView.backgroundColor = UIColor.white
+        ballView.backgroundColor = UIColor.white
+        
         }
+     
         
-        
-        if ballView.backgroundColor == UIColor.white || blockArray.count == 0
+        if ballView.backgroundColor == UIColor.white
         {
-            
             makeTheAlert()
-            
         }
-    }
+        
+
+     }
     
-/*    override func viewDidAppear(_ animated: Bool) {
+    
+    override func viewDidAppear(_ animated: Bool) {
         
-        
+        dynamicAnimatorStuffs()
         
         for block in blockArray
         {
+            block?.backgroundColor = UIColor.cyan
             
             dynamicAnimatorStuffs()
             
             
-            block?.backgroundColor = UIColor.cyan
         }
         
-        
-        
-
-        
-        
-        
     }
+     
+ 
     
-*/
-    
-    func collisionBehavior(_ behavior: UICollisionBehavior, beganContactFor item: UIDynamicItem, withBoundaryIdentifier identifier: NSCopying?, at p: CGPoint) {
-        
+    func collisionBehavior(_ behavior: UICollisionBehavior, beganContactFor item: UIDynamicItem, withBoundaryIdentifier identifier: NSCopying?, at p: CGPoint)
+    {
         
         if ballView.center.y > paddleView.center.y
         {
             ballView.backgroundColor = UIColor.white
             
             makeTheAlert()
+            
         }
-        
         
         
         
     }
     
-    func collisionBehavior(_ behavior: UICollisionBehavior, endedContactFor item1: UIDynamicItem, with item2: UIDynamicItem) {
+    func collisionBehavior(_ behavior: UICollisionBehavior, endedContactFor item1: UIDynamicItem, with item2: UIDynamicItem){
         
-        UIView.animate(withDuration: 0.2) {
-            
-            
-
+        UIView.animate(withDuration: 0.2){
             
             for block in self.blockArray
             {
-                if block == item2 as? UIView
+                if block == item2 as! UIView
                 {
-                    if block!.backgroundColor == UIColor.cyan
+                    if block?.backgroundColor == UIColor.cyan
                     {
-                        block!.backgroundColor = UIColor.purple
+                        block?.backgroundColor = UIColor.purple
                     }
-                        
-                    else if block!.backgroundColor == UIColor.purple
+                    
+                    else if block?.backgroundColor == UIColor.purple
                     {
-                        
                         self.collisionBehavior.removeItem(block!)
                         
-                        block!.removeFromSuperview()
+                        block?.removeFromSuperview()
                         
                         self.count += 1
-                        
-                        
                     }
-                    
-                    
                     
                     
                     if self.count == 10
                     {
                         self.makeTheAlert()
                     }
-                    
-                    
-                    
-                    
                 }
             }
             
+            
+            
+            
         }
-        
+    
     }
     
     func makeTheAlert()
     {
+        
         let alert = UIAlertController(title: "GAME OVER", message: nil, preferredStyle: UIAlertControllerStyle.alert)
         
         let okAction = UIAlertAction(title: "restart", style: UIAlertActionStyle.default) { (action) in
@@ -186,20 +180,14 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         
         let rageQuitAction = UIAlertAction(title: "rage quit", style: UIAlertActionStyle.default) { (action) in
             
-            self.dismiss(animated: false, completion: nil)
             
+            self.dismiss(animated: false, completion: nil)
         }
-        
-        
-        
         
         
         alert.addAction(okAction)
         
         alert.addAction(rageQuitAction)
-        
-        
-        
         
         present(alert, animated: true, completion: nil)
         
@@ -209,23 +197,22 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
     {
         self.ballView.backgroundColor = UIColor.purple
         
-        
         self.count = 0
         
-           for block in blockArray
-         {
-         view.addSubview(block!)
-         
-         block?.backgroundColor  = UIColor.cyan
-         
-         collisionBehavior.addItem(block!)
-         }
+        for block in blockArray
+        {
+            self.view.addSubview(block!)
+            
+            block?.backgroundColor = UIColor.cyan
+            
+            collisionBehavior.addItem(block!)
+        }
         
         self.dynamicAnimatorStuffs()
         
+        
     }
-    
-    func dynamicAnimatorStuffs()
+       func dynamicAnimatorStuffs()
     {
         ballView.layer.cornerRadius = 12.0
         
@@ -243,7 +230,7 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         
         dynamicAnimator.addBehavior(pushBehavior)
         
-        collisionBehavior = UICollisionBehavior(items: [ballView, paddleView, View1,View2,View3,View4,View5,View6,View7,View8,View9,View10])
+        collisionBehavior = UICollisionBehavior(items: [ballView, paddleView, View1, View2, View3, View4, View5, View6, View7, View8, View9, View10])
         
         collisionBehavior.collisionMode = UICollisionBehaviorMode.everything
         
@@ -289,6 +276,11 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         
         dynamicAnimator.addBehavior(blockDynamicBehavior)
         
+        
+    }
+    
+    func makeBlocks()
+    {
         
     }
     

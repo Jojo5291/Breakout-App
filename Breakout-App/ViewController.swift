@@ -281,6 +281,84 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
     
     func makeBlocks()
     {
+        View1 = UIView(frame: CGRect(x: 46, y: 28, width: 50, height: 20))
+        
+        View1.backgroundColor = UIColor.cyan
+        
+        view.addSubview(View1)
+        
+        
+        
+        View2 = UIView(frame: CGRect(x: 104, y: 28, width: 50, height: 20))
+        
+        View2.backgroundColor = UIColor.cyan
+        
+        view.addSubview(View2)
+        
+        
+        
+        View3 = UIView(frame: CGRect(x: 162, y: 28, width: 50, height: 20))
+        
+        View3.backgroundColor = UIColor.cyan
+        
+        view.addSubview(View3)
+        
+        
+        
+        View4 = UIView(frame: CGRect(x: 220, y: 28, width: 50, height: 20))
+        
+        View4.backgroundColor = UIColor.cyan
+        
+        view.addSubview(View4)
+        
+        
+        
+        View5 = UIView(frame: CGRect(x: 278, y: 28, width: 50, height: 20))
+        
+        View5.backgroundColor = UIColor.cyan
+        
+        view.addSubview(View5)
+        
+        
+        
+        View6 = UIView(frame: CGRect(x: 46, y: 52, width: 50, height: 20))
+        
+        View6.backgroundColor = UIColor.cyan
+        
+        view.addSubview(View6)
+        
+        
+        
+        View7 = UIView(frame: CGRect(x: 104, y: 52, width: 50, height: 20))
+        
+        View7.backgroundColor = UIColor.cyan
+        
+        view.addSubview(View7)
+        
+        
+        
+        View8 = UIView(frame: CGRect(x: 162, y: 52, width: 50, height: 20))
+        
+        View8.backgroundColor = UIColor.cyan
+        
+        view.addSubview(View8)
+        
+        
+        
+        View9 = UIView(frame: CGRect(x: 220, y: 52, width: 50, height: 20))
+        
+        View9.backgroundColor = UIColor.cyan
+        
+        view.addSubview(View9)
+        
+        
+        
+        View10 = UIView(frame: CGRect(x: 278, y: 52, width: 50, height: 20))
+        
+        View10.backgroundColor = UIColor.cyan
+        
+        view.addSubview(View10)
+        
         
     }
     

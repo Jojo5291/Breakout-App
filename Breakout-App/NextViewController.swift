@@ -106,6 +106,7 @@ class NextViewController: UIViewController, UICollisionBehaviorDelegate {
 
     override func viewDidAppear(_ animated: Bool) {
         
+        
         dynamicAnimatorStuffs()
         
         for block in blockArray
@@ -116,6 +117,8 @@ class NextViewController: UIViewController, UICollisionBehaviorDelegate {
         dynamicAnimatorStuffs()
             
         }
+        
+        
     }
     
     func collisionBehavior(_ behavior: UICollisionBehavior, beganContactFor item: UIDynamicItem, withBoundaryIdentifier identifier: NSCopying?, at p: CGPoint) {
@@ -185,6 +188,8 @@ class NextViewController: UIViewController, UICollisionBehaviorDelegate {
         let okAction = UIAlertAction(title: "restart", style: UIAlertActionStyle.default) { (action) in
             
             self.reset()
+            
+            
         }
         
         let rageQuitAction = UIAlertAction(title: "rage quit", style: UIAlertActionStyle.default) { (action) in
@@ -295,5 +300,7 @@ class NextViewController: UIViewController, UICollisionBehaviorDelegate {
         dynamicAnimator.addBehavior(blockDynamicBehavior)
     }
  
+ 
+    
 
 }

@@ -13,6 +13,7 @@
 		D772FAB91EB3CCE200E90247 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D772FAB81EB3CCE200E90247 /* Assets.xcassets */; };
 		D772FABC1EB3CCE200E90247 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D772FABA1EB3CCE200E90247 /* LaunchScreen.storyboard */; };
 		D7DE15311EC2535B002FC2C4 /* NextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DE15301EC2535B002FC2C4 /* NextViewController.swift */; };
+		D7F1E4F51ED4C1480089247D /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F1E4F41ED4C1480089247D /* ThirdViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		D772FABB1EB3CCE200E90247 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D772FABD1EB3CCE200E90247 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D7DE15301EC2535B002FC2C4 /* NextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextViewController.swift; sourceTree = "<group>"; };
+		D7F1E4F41ED4C1480089247D /* ThirdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			children = (
 				D772FAB11EB3CCE200E90247 /* AppDelegate.swift */,
 				D772FAB31EB3CCE200E90247 /* ViewController.swift */,
+				D7F1E4F41ED4C1480089247D /* ThirdViewController.swift */,
 				D772FAB51EB3CCE200E90247 /* Main.storyboard */,
 				D7DE15301EC2535B002FC2C4 /* NextViewController.swift */,
 				D772FAB81EB3CCE200E90247 /* Assets.xcassets */,
@@ -142,6 +145,7 @@
 			files = (
 				D772FAB41EB3CCE200E90247 /* ViewController.swift in Sources */,
 				D7DE15311EC2535B002FC2C4 /* NextViewController.swift in Sources */,
+				D7F1E4F51ED4C1480089247D /* ThirdViewController.swift in Sources */,
 				D772FAB21EB3CCE200E90247 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -357,7 +357,7 @@ class ViewController: UIViewController, UICollisionBehaviorDelegate {
         
         View10.backgroundColor = UIColor.cyan
         
-        view.addSubview(View10)
+        view.addSubview(View10) 
         
         
     }

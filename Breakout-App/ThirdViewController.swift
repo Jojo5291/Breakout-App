@@ -14,6 +14,8 @@ class ThirdViewController: UIViewController, UICollisionBehaviorDelegate {
     
     var pushBehavior: UIPushBehavior!
     
+    var secondPushBehavior: UIPushBehavior!
+    
     var collisionBehavior: UICollisionBehavior!
     
     var ballDynamicBehavior: UIDynamicItemBehavior!
@@ -46,9 +48,7 @@ class ThirdViewController: UIViewController, UICollisionBehaviorDelegate {
     
     @IBOutlet weak var paddleView: UIView!
     
-    var newBall: UIView!
-    
-    
+    var newBall = UIView(frame: CGRect(x: 153, y: 205, width: 25, height: 25))
     
     var blockArrayWithoutTheBlock = [UIView]()
     
@@ -80,7 +80,7 @@ class ThirdViewController: UIViewController, UICollisionBehaviorDelegate {
     @IBAction func panGesture(_ sender: UIPanGestureRecognizer) {
         
         paddleView.center = CGPoint(x: sender.location(in: self.view).x, y: paddleView.center.y)
-        
+        dynamicAnimator.updateItem(usingCurrentState: newBall)
         dynamicAnimator.updateItem(usingCurrentState: paddleView)
         
         
@@ -126,9 +126,19 @@ class ThirdViewController: UIViewController, UICollisionBehaviorDelegate {
         {
             ballView.backgroundColor = UIColor.white
             
+            newBall.backgroundColor = UIColor.white
+            
              makeTheAlert()
         }
         
+        if newBall.center.y > paddleView.center.y
+        {
+            ballView.backgroundColor = UIColor.white
+            
+            newBall.backgroundColor = UIColor.white
+            
+            makeTheAlert()
+        }
         
     }
     
@@ -161,14 +171,17 @@ class ThirdViewController: UIViewController, UICollisionBehaviorDelegate {
                         
                     }
                     
-                    //else if block.backroundColor == UIColor.yellow
-                    //{
-                    //self.makeNewBall
-                    //block.removeFromSuperView()
-                    //self.collisionBehavior.removeItem(block)
-                    //self.count += 1
-                    
-                    
+                    else if block.backgroundColor == UIColor.yellow
+                    {
+                    self.makeNewBall()
+                        
+                    block.removeFromSuperview()
+                        
+                    self.collisionBehavior.removeItem(block)
+                        
+                    self.count += 1
+                    }
+                
                     if self.count == 10
                     {
                         self.makeTheAlert()
@@ -217,19 +230,25 @@ class ThirdViewController: UIViewController, UICollisionBehaviorDelegate {
     
     func reset()
     {
-        self.ballView.backgroundColor = UIColor.purple
+        self.ballView.backgroundColor = UIColor.green
         
         self.paddleView.center = CGPoint(x: 58, y: 615)
         
         
         self.count = 0
         
+        self.newBall.removeFromSuperview()
         
         for block in blockArray
         {
             self.view.addSubview(block)
             
              collisionBehavior.addItem(block)
+        }
+        
+        for block in blockArrayWithoutTheBlock
+        {
+            block.backgroundColor = UIColor.brown
         }
         self.dynamicAnimatorStuffs()
         
@@ -307,11 +326,31 @@ class ThirdViewController: UIViewController, UICollisionBehaviorDelegate {
     func makeNewBall()
     {
         
-        self.view.addSubview(newBall)
 
-        newBall = UIView(frame: CGRect(x: 153, y: 205, width: 25, height: 25))
         
+        self.view.addSubview(newBall)
+        
+        newBall.backgroundColor = UIColor.green
+
         newBall.layer.cornerRadius = 12.0
+        
+        secondPushBehavior = UIPushBehavior(items: [newBall], mode: UIPushBehaviorMode.instantaneous)
+        
+        secondPushBehavior.pushDirection = CGVector(dx: 0.5, dy: 1.0)
+        
+        secondPushBehavior.active = true
+        
+        secondPushBehavior.magnitude = 0.3
+        
+        dynamicAnimator.addBehavior(secondPushBehavior)
+        
+        collisionBehavior.addItem(newBall)
+        
+        dynamicAnimator.addBehavior(collisionBehavior)
+        
+        ballDynamicBehavior.addItem(newBall)
+        
+        dynamicAnimator.addBehavior(ballDynamicBehavior)
         
     }
     

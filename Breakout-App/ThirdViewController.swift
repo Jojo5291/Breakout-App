@@ -20,6 +20,8 @@ class ThirdViewController: UIViewController, UICollisionBehaviorDelegate {
     
     var ballDynamicBehavior: UIDynamicItemBehavior!
     
+    var secondBallDynamicBehavior: UIDynamicItemBehavior!
+    
     var paddleDynamicBehavior: UIDynamicItemBehavior!
     
     var blockDynamicBehavior: UIDynamicItemBehavior!
@@ -80,7 +82,9 @@ class ThirdViewController: UIViewController, UICollisionBehaviorDelegate {
     @IBAction func panGesture(_ sender: UIPanGestureRecognizer) {
         
         paddleView.center = CGPoint(x: sender.location(in: self.view).x, y: paddleView.center.y)
+        
         dynamicAnimator.updateItem(usingCurrentState: newBall)
+        
         dynamicAnimator.updateItem(usingCurrentState: paddleView)
         
         
@@ -110,8 +114,6 @@ class ThirdViewController: UIViewController, UICollisionBehaviorDelegate {
         {
             
             block.backgroundColor = UIColor.brown
-            
-            dynamicAnimatorStuffs()
             
         }
         
@@ -151,7 +153,7 @@ class ThirdViewController: UIViewController, UICollisionBehaviorDelegate {
             
             for block in self.blockArray
             {
-                if block == item2 as! UIView
+                if ((item1.isEqual(block) && item2.isEqual(self.ballView)) || (item1.isEqual(self.ballView) && item2.isEqual(block))) || ((item1.isEqual(block) && item2.isEqual(self.newBall)) || (item1.isEqual(self.newBall) && item2.isEqual(block)))
                 {
                     if block.backgroundColor == UIColor.brown
                     {
@@ -170,24 +172,27 @@ class ThirdViewController: UIViewController, UICollisionBehaviorDelegate {
                         
                         
                     }
-                    
+                        
                     else if block.backgroundColor == UIColor.yellow
                     {
-                    self.makeNewBall()
+                        self.makeNewBall()
                         
-                    block.removeFromSuperview()
+                        block.removeFromSuperview()
                         
-                    self.collisionBehavior.removeItem(block)
+                        self.collisionBehavior.removeItem(block)
                         
-                    self.count += 1
+                        self.count += 1
                     }
-                
+                    
                     if self.count == 10
                     {
                         self.makeTheAlert()
                     }
                     
                 }
+
+
+            
             }
             
         }
@@ -234,6 +239,7 @@ class ThirdViewController: UIViewController, UICollisionBehaviorDelegate {
         
         self.paddleView.center = CGPoint(x: 58, y: 615)
         
+        self.newBall.center = CGPoint(x: 153, y: 205)
         
         self.count = 0
         
@@ -251,6 +257,8 @@ class ThirdViewController: UIViewController, UICollisionBehaviorDelegate {
             block.backgroundColor = UIColor.brown
         }
         self.dynamicAnimatorStuffs()
+        
+    
         
     }
     
@@ -326,8 +334,6 @@ class ThirdViewController: UIViewController, UICollisionBehaviorDelegate {
     func makeNewBall()
     {
         
-
-        
         self.view.addSubview(newBall)
         
         newBall.backgroundColor = UIColor.green
@@ -346,11 +352,25 @@ class ThirdViewController: UIViewController, UICollisionBehaviorDelegate {
         
         collisionBehavior.addItem(newBall)
         
+        collisionBehavior.collisionDelegate = self
+        
         dynamicAnimator.addBehavior(collisionBehavior)
         
         ballDynamicBehavior.addItem(newBall)
         
         dynamicAnimator.addBehavior(ballDynamicBehavior)
+        
+        secondBallDynamicBehavior = UIDynamicItemBehavior(items: [newBall])
+        
+        secondBallDynamicBehavior.allowsRotation = false
+        
+        secondBallDynamicBehavior.elasticity = 1.0
+        
+        secondBallDynamicBehavior.resistance = 0.0
+        
+        secondBallDynamicBehavior.friction = 0.0
+        
+        dynamicAnimator.addBehavior(secondBallDynamicBehavior)
         
     }
     

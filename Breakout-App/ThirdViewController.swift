@@ -80,7 +80,9 @@ class ThirdViewController: UIViewController, UICollisionBehaviorDelegate {
     @IBAction func panGesture(_ sender: UIPanGestureRecognizer) {
         
         paddleView.center = CGPoint(x: sender.location(in: self.view).x, y: paddleView.center.y)
+        
         dynamicAnimator.updateItem(usingCurrentState: newBall)
+        
         dynamicAnimator.updateItem(usingCurrentState: paddleView)
         
         

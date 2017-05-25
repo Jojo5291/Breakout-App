@@ -20,6 +20,8 @@ class ThirdViewController: UIViewController, UICollisionBehaviorDelegate {
     
     var ballDynamicBehavior: UIDynamicItemBehavior!
     
+    var secondBallDynamicBehavior: UIDynamicItemBehavior!
+    
     var paddleDynamicBehavior: UIDynamicItemBehavior!
     
     var blockDynamicBehavior: UIDynamicItemBehavior!
@@ -328,8 +330,6 @@ class ThirdViewController: UIViewController, UICollisionBehaviorDelegate {
     func makeNewBall()
     {
         
-
-        
         self.view.addSubview(newBall)
         
         newBall.backgroundColor = UIColor.green
@@ -348,11 +348,25 @@ class ThirdViewController: UIViewController, UICollisionBehaviorDelegate {
         
         collisionBehavior.addItem(newBall)
         
+        collisionBehavior.collisionDelegate = self
+        
         dynamicAnimator.addBehavior(collisionBehavior)
         
         ballDynamicBehavior.addItem(newBall)
         
         dynamicAnimator.addBehavior(ballDynamicBehavior)
+        
+        secondBallDynamicBehavior = UIDynamicItemBehavior(items: [newBall])
+        
+        secondBallDynamicBehavior.allowsRotation = false
+        
+        secondBallDynamicBehavior.elasticity = 1.0
+        
+        secondBallDynamicBehavior.resistance = 0.0
+        
+        secondBallDynamicBehavior.friction = 0.0
+        
+        dynamicAnimator.addBehavior(secondBallDynamicBehavior)
         
     }
     
